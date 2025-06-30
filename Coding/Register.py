@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template # Added render_template
 from firebase_admin import credentials, firestore, initialize_app
 import re # Import regex for PIN validation
 from flask_cors import CORS # Import CORS for handling cross-origin requests
@@ -26,7 +26,7 @@ except Exception as e:
 # For demonstration, we'll use a placeholder.
 # You might want to match this with __app_id from your frontend environment if public data path matters.
 FLASK_APP_ID = "default-app-id" # Match this with your frontend's __app_id if possible
-USERS_COLLECTION_PATH = f"artifacts/{FLASK_APP_ID}/public/data/users"
+USERS_COLLECTION_PATH = "users"
 
 # --- Helper Function for PIN Validation ---
 def validate_pin(pin):
@@ -36,6 +36,13 @@ def validate_pin(pin):
     return bool(re.fullmatch(r'^\d{4}$', pin))
 
 # --- API Endpoints ---
+
+@app.route('/') # New route to serve the HTML file
+def index():
+    """
+    Serves the main HTML page.
+    """
+    return render_template('register.html')
 
 @app.route('/register', methods=['POST'])
 def register_user():
