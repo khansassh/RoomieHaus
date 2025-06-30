@@ -47,6 +47,7 @@
     }
 
     .register-container {
+      margin: auto; /* Add this line */
       text-align: center;
       background-color: #d9d9d9;
       padding: 30px 20px;
@@ -73,7 +74,8 @@
 
     .input-container input {
       width: 100%;
-      padding: 10px 40px;
+      padding: 10px 15px 10px 35px; /* reduced left padding from 40px to 35px */
+      box-sizing: border-box; /* <- ensures padding doesn't overflow container */
       border: none;
       border-radius: 20px;
       background-color: #f0f0f0;
