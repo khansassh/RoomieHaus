@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Page</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #98a2a5; /* Gray-blue background */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Background stars */
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .background .star {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background-color: white;
+      border-radius: 50%;
+      animation: twinkle 3s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    /* Register Container */
+    .register-container {
+      text-align: center;
+      background-color: transparent;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .input-container {
+      position: relative;
+      margin-bottom: 15px;
+    }
+
+    .input-container input {
+      width: 300px;
+      padding: 10px 40px;
+      border: none;
+      border-radius: 30px;
+      background-color: #d9d9d9; /* Light gray background for inputs */
+      font-size: 16px;
+      outline: none;
+    }
+
+    .input-container .icon {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: #666;
+    }
+
+    button {
+      width: 300px;
+      padding: 10px;
+      border: none;
+      border-radius: 30px;
+      background-color: #d9d9d9;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #c1c1c1;
+    }
+
+    .signin-link {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #000;
+    }
+
+    .signin-link a {
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .signin-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="background">
+    <!-- Add stars -->
+    <div class="star" style="top: 10%; left: 20%;"></div>
+    <div class="star" style="top: 25%; left: 75%;"></div>
+    <div class="star" style="top: 50%; left: 10%;"></div>
+    <div class="star" style="top: 70%; left: 40%;"></div>
+    <div class="star" style="top: 90%; left: 80%;"></div>
+  </div>
+
+  <div class="register-container">
+    <h1>Register</h1>
+    <p>Please register to login</p>
+    
+    <!-- Partner 1 Input -->
+    <div class="input-container">
+      <span class="icon">👤</span>
+      <input type="text" placeholder="Partner 1">
+    </div>
+
+    <!-- Partner 2 Input -->
+    <div class="input-container">
+      <span class="icon">👤</span>
+      <input type="text" placeholder="Partner 2">
+    </div>
+
+    <!-- PIN Input -->
+    <div class="input-container">
+      <span class="icon">🔑</span>
+      <input type="password" placeholder="PIN">
+    </div>
+
+    <!-- Sign Up Button -->
+    <button>Sign Up</button>
+
+    <!-- Sign In Link -->
+    <p class="signin-link">
+      Already have an account? <a href="#">Sign in</a>
+    </p>
+  </div>
+</body>
+</html>
