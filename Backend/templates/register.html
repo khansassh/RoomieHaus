@@ -130,22 +130,67 @@
   <div class="register-container">
     <h1>Register</h1>
     <p>Please register to login</p>
-    <div class="input-container">
-      <span class="icon">👤</span>
-      <input type="text" placeholder="Partner 1">
-    </div>
-    <div class="input-container">
-      <span class="icon">👤</span>
-      <input type="text" placeholder="Partner 2">
-    </div>
-    <div class="input-container">
-      <span class="icon">🔑</span>
-      <input type="password" placeholder="PIN">
-    </div>
-    <button>Sign Up</button>
+ <!-- Partner 1 -->
+<div class="input-container">
+  <span class="icon">👤</span>
+  <input type="text" id="partner1" placeholder="Partner 1">
+</div>
+
+<!-- Partner 2 -->
+<div class="input-container">
+  <span class="icon">👤</span>
+  <input type="text" id="partner2" placeholder="Partner 2">
+</div>
+
+<!-- PIN -->
+<div class="input-container">
+  <span class="icon">🔑</span>
+  <input type="password" id="pin" placeholder="PIN" maxlength="4" inputmode="numeric" pattern="\d*">
+</div>
+    <button id="signupButton">Sign Up</button>
     <p class="signin-link">
       Already have an account? <a href="#">Sign in</a>
     </p>
   </div>
+  <script>
+  document.getElementById("signupButton").addEventListener("click", function () {
+    const partner1 = document.getElementById("partner1").value;
+    const partner2 = document.getElementById("partner2").value;
+    const pin = document.getElementById("pin").value;
+
+    if (!partner1 || !partner2 || !pin) {
+      alert("Please fill in all fields.");
+      return;
+    }
+    if (!/^\d{4}$/.test(pin)) {
+      alert("PIN must be exactly 4 numbers.");
+      return;
+    }
+
+    fetch("http://127.0.0.1:5000/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        partner1: partner1,
+        partner2: partner2,
+        pin: pin
+      })
+    })
+    .then(response => response.json().then(data => ({status: response.status, body: data})))
+    .then(result => {
+      if (result.status === 201) {
+        alert(result.body.message);
+      } else {
+        alert(result.body.message);
+      }
+    })
+    .catch(error => {
+      console.error("Error:", error);
+      alert("Failed to register. Please try again.");
+    });
+  });
+</script>
 </body>
 </html>
